@@ -5,9 +5,6 @@ toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
-includes:
-  - errors
-
 search: true
 ---
 
@@ -62,6 +59,24 @@ To link a scenario to an issue, follow the steps below.
 4. In the text box, begin typing to search your issue list. When the issue is found click the **Link** button to establish the link.
 
 ## Status Mapping
+
+### Mapping custom statuses from JIRA to Behave Pro
+
+You can map custom JIRA statuses to the Behave Pro statuses by dragging unmapped statuses to a one of 3 columns, "Open", "Work in Progress" and "Closed".
+
+* **OPEN** for scenarios attached to issues that have not been started yet
+* **WIP** for scenarios attached to issues that are in progress, useful for selecting the current working set of scenarios
+* **COMPLETED** for scenarios attached to resolved issues, useful for regression testing existing functionality
+
+These statuses will be applied as tags on the exported scenarios, allowing you to filter them in the BDD tool of your choice. For example, in Cucumber-JVM, you would run WIP scenarios as follows:
+
+> $ cucumber --tags @WIP
+
+To map your statuses to Behave Pro, go to the project administration page and click on the Behave Pro mapping sidebar item.
+
+![project-admin-mapping.png](project-admin-mapping.png)
+
+Any statuses that you have added to JIRA should show up in in the unmapped column, drag them to the appropriate column and it will autosave. That's it! Simple!
 
 # Test Automation
 
@@ -254,8 +269,8 @@ Usage: behave [options]
 
 Specific options:
     -h, --host HOST                  Host URI for JIRA installation - This should be https://behave.pro
-    -u, --user USER                  User ID from the JIRA Project Admin Page
-    -p, --pass PASS                  API Key from the JIRA Project Admin Page
+    -u, --user USER                  JIRA username
+    -p, --pass PASS                  JIRA Password
     -k, --key KEY                    Project ID from the JIRA Project Admin Page
     -d, --directory [DIR]            Specify output directory (default 'features')
     -m, --manual                     Include manual tagged scenarios in download
@@ -437,7 +452,7 @@ You must replace <code>username</code> and <code>password</code> with your perso
 Add nunit="true" to the task options if you need to use the NUnit runner. This strips characters from tags (traits) that NUnit doesn't work with.
 </aside>
 
-## Step by Step with Visual Studio 2013
+### Step by Step with Visual Studio 2013
 
 This guide will take you from a new solution through to integrating Behave Pro with SpecFlow, and running the feature files.
 
@@ -457,167 +472,183 @@ Install the **Hindsight.Behave**, **SpecFlow**, **SpecFlow.NUnit**, **NUnit**, *
 
 ![dot-net-nuget.png](dot-net-nuget.png)
 
-## Configuring MSBuild task
+### Configuring MSBuild task
 
 Unload the Specs project, in order to edit the .csproj file (which is the MSBuild configuration used to build that particular project)
 
-## next
+![dot-net-unload-project.png](dot-net-unload-project.png)
+![dot-net-edit-project.png](dot-net-edit-project.png)
 
-```ruby
-require 'kittn'
+In the .csproj file, uncomment the last section of the root Project element which defines Targets, and add the below code:
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```xml
+...
+<UsingTask
+    TaskName="Behave"
+    AssemblyFile="..\packages\Hindsight.Behave.0.1.8\lib\Behave.dll" />
+<Target Name="BeforeBuild">
+    <Behave
+        host="https://behave.pro"
+        project="10900"
+        username="REPLACE WITH YOUR JIRA USERNAME"
+        password="REPLACE WITH YOUR JIRA PASSWORD"
+        directory="Features\"
+        manual="true" 
+        nunit="true />
+</Target>
 ```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>username</code> and <code>password</code> with your personal JIRA credentials.
 </aside>
 
-# Kittens
+In the UsingTask block, the AssemblyFile path can be found further up the .csproj file:
 
-## Get All Kittens
+![dot-net-assemblyfile-path.png](dot-net-assemblyfile-path.png)
 
-```ruby
-require 'kittn'
+Then, reload the project from the Project Explorer.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+### Fetching and including Feature files from Behave Pro
 
-```python
-import kittn
+By building the Specs project, the Feature files will be fetched from Behave Pro. They will not initially be visible in the project explorer, so if you click "Show All Files" you can include the Features directory into the project.
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+![dot-net-include.png](dot-net-include.png)
+
+### Generating step definitions
+
+Follow the [SpecFlow Getting Started guide](http://www.specflow.org/getting-started/) to generate Step definitions for all the .feature files that were fetched.
+
+### Filtering which scenarios to run
+
+The build tool will download all the features for the project to your local machine. In order to only run certain tests (e.g. by tag, by assignee, by issue), switch the Test Explorer view to Traits.
+
+![dot-net-traits.png](dot-net-traits.png)
+
+## Python
+
+We host our Python client [PyPi](http://pypi.python.org/pypi/hindsight), and it is available through pip or by direct download. Assuming you have Python and pip installed on your system, run:
+
+> $ pip install hindsight
+
+You will have installed the behave python client and all its dependencies. Depending on your system, you may have to prefix the command with "sudo"
+
+### Using from the command line
+
+Installing the package will have placed a binary on your path named "behave-cli". The output of "behave-cli --help" is as follows:
+
+> $ behave-cli HOST KEY [-u USERNAME] [-p PASSWORD] [-d DIR] [-m]
+
+An example usage would be:
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+$ behave-cli https://behave.pro 10100 \
+  -u "REPLACE WITH YOUR JIRA USERNAME" \
+  -p "REPLACE WITH YOUR JIRA PASSWORD" \
+  -d features \
+  -m
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+<aside class="notice">
+You must replace <code>username</code> and <code>password</code> with your personal JIRA credentials.
 </aside>
 
-## Get a Specific Kitten
+which uses your API key user name and value to download features from project ID 10100 into the features directory, including all manual scenarios.
 
-```ruby
-require 'kittn'
+### Using from within a script
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+You can use the JIRA connector within your own scripts to download features from Behave
 
 ```python
-import kittn
+#!/usr/bin/env python
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
+from hindsight.behave import JiraConnector
+
+jc = JiraConnector()
+jc.fetch(
+  host='https://behave.pro',
+  username='REPLACE WITH YOUR JIRA USERNAME',
+  password='REPLACE WITH YOUR JIRA PASSWORD',
+  key='10100',
+  dir='features',
+  manual=True
+)
 ```
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
+<aside class="notice">
+You must replace <code>username</code> and <code>password</code> with your personal JIRA credentials.
+</aside>
 
-```javascript
-const kittn = require('kittn');
+This will download all features from project ID 10100 into the features director, including manual tagged scenarios.
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
+## NodeJS
 
-> The above command returns JSON structured like this:
+The Behave Pro Node client is available from [NPM](https://www.npmjs.com/package/behavepro), and can be installed using the following:
+
+> $ npm install behavepro -g
+
+NodeJS and NPM are both required to be installed.
+
+### Using from the command line
+
+Parameters can either be passed from the command line:
+
+> $ behavepro [--id PROJECT ID] [--userId USER] [--apiKey KEY]
+
+Available parameters:
+
+* **[--host HOST]** Behave Pro host (JIRA instance url)
+* **[--id PROJECT ID]** JIRA project id
+* **[--userId USER]** JIRA username
+* **[--apiKey KEY]** JIRA password
+* **[--output DIRECTORY]** Output directory - default: 'features'
+* **[--manual]** Include scenarios marked as manual
+* **[--config CONFIG]** JSON config file - relative to current directory
+
+<aside class="notice">
+You must replace <code>username</code> and <code>password</code> with your personal JIRA credentials.
+</aside>
+
+If the three required parameters are missing, they will be attempted to be read from a json config file in the current directory:
+
+> $ behavepro
+
+`config.json` example
 
 ```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+[{
+    "id": 10000,
+    "userId": "REPLACE WITH YOUR JIRA USERNAME",
+    "apiKey": "REPLACE WITH YOUR JIRA PASSWORD"
+}, {
+    "id": 10100,
+    "userId": "REPLACE WITH YOUR JIRA USERNAME",
+    "apiKey": "REPLACE WITH YOUR JIRA PASSWORD"
+}]
 ```
 
-This endpoint retrieves a specific kitten.
+### Using from within a script
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+You can use the client in your own scripts to download features from Behave Pro.
 
-### HTTP Request
+> $ npm install behavepro --save
 
-`GET http://example.com/kittens/<ID>`
+```javascript
+var BehavePro = require('behavepro');
 
-### URL Parameters
+BehavePro({
+  "id": 10000,
+  "userId": "REPLACE WITH YOUR JIRA USERNAME",
+  "apiKey": "REPLACE WITH YOUR JIRA PASSWORD"
+}, function() {
+  // done
+});
+```
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+Available parameters:
 
+* **"host": HOST** - Behave Pro host - default: 'https://behave.pro'
+* **"id": ID** - JIRA project id
+* **"userId": USERID** - JIRA username
+* **"apiKey": APIKEY** - JIRA password
+* **"output": DIRECTORY** - Output directory - default: 'features'
+* **"manual": true** - Include scenarios marked as manual
