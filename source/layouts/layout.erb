@@ -46,6 +46,25 @@ under the License.
     .content > h1, .content > h2, .content > h3, .content > h4, .content > h5, .content > h6, .content > p, .content > table, .content > ul, .content > ol, .content > aside, .content > dl {
       width: 100% !important;
     }
+    .tocify-wrapper > a > img {
+      max-width: 80%;
+      padding: 20px;
+    }
+    .content aside {
+      text-shadow: 0 1px 0 #ccd9ea;
+      background: #ebf2f9;
+    }
+
+    .content a {
+      color: #3572b0;
+      text-decoration: none;
+    }
+    .content a:hover {
+      text-decoration: underline;
+    }
+    .content p {
+      margin-top: 10px;
+    }
     </style>
   </head>
 
@@ -57,7 +76,7 @@ under the License.
       </span>
     </a>
     <div class="tocify-wrapper">
-      <%= image_tag "logo.png" %>
+      <a href="https://www.hindsightsoftware.com/home"><%= image_tag "logo.png" %></a>
       <% if language_tabs %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>

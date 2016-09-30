@@ -1,8 +1,7 @@
 ---
-title: API Reference
+title: Behave Pro Documentation
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 search: true
@@ -285,7 +284,7 @@ Specific options:
         --version                    Show version
 ```
 
-> An example call could look like this:
+An example call could look like this:
 
 ```bash
 $ behave --host https://behave.pro \
