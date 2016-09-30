@@ -51,12 +51,17 @@ And two black garments in stock
 You can link an existing scenario to an issue, so that any modifications to that scenario will generate an email notification explaining the content of the change and the user who made the change.
 To link a scenario to an issue, follow the steps below.
 
-1. Navigate to the **Specification** page an, on the left, choose a scenario that you want to link to a specific issue.
-2. Click the small JIRA icon adjacent to the **Scenario** heading.
+1\. Navigate to the **Specification** page an, on the left, choose a scenario that you want to link to a specific issue.
+
+2\. Click the small JIRA icon adjacent to the **Scenario** heading.
+
 ![Click the JIRA button to link a scenario to an existing user story](link_scenario_to_an_issue.jpeg)
-3. A pop-up window will appear, similar to the figure below. Click the **Link existing issue** button.
+
+3\. A pop-up window will appear, similar to the figure below. Click the **Link existing issue** button.
+
 ![Linking a scenario to an existing user story](link_scenario_to_an_issue_2.png)
-4. In the text box, begin typing to search your issue list. When the issue is found click the **Link** button to establish the link.
+
+4\. In the text box, begin typing to search your issue list. When the issue is found click the **Link** button to establish the link.
 
 ## Status Mapping
 

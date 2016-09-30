@@ -41,6 +41,10 @@ under the License.
       white-space: -o-pre-wrap;
       word-wrap: break-word;
       float: none;
+      width: 100% !important;
+    }
+    .content > h1, .content > h2, .content > h3, .content > h4, .content > h5, .content > h6, .content > p, .content > table, .content > ul, .content > ol, .content > aside, .content > dl {
+      width: 100% !important;
     }
     </style>
   </head>
@@ -82,24 +86,10 @@ under the License.
       <% end %>
     </div>
     <div class="page-wrapper">
-      <div class="dark-box"></div>
       <div class="content">
         <%= yield %>
         <% current_page.data.includes && current_page.data.includes.each do |include| %>
           <%= partial "includes/#{include}" %>
-        <% end %>
-      </div>
-      <div class="dark-box">
-        <% if language_tabs %>
-          <div class="lang-selector">
-            <% language_tabs.each do |lang| %>
-              <% if lang.is_a? Hash %>
-                <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-              <% else %>
-                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-              <% end %>
-            <% end %>
-          </div>
         <% end %>
       </div>
     </div>
