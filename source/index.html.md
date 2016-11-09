@@ -656,3 +656,50 @@ Available parameters:
 * **"apiKey": APIKEY** - JIRA password
 * **"output": DIRECTORY** - Output directory - default: 'features'
 * **"manual": true** - Include scenarios marked as manual
+
+# Data Migration
+
+## Appliance to JIRA Server Migration
+
+**Prerequisites:**
+
+* Behave Pro Migrator
+  * Download jar: [https://bintray.com/hindsightsoftware/public-maven/behave-pro-migrate/1.0](https://bintray.com/hindsightsoftware/public-maven/behave-pro-migrate/1.0)
+* Behave Pro appliance URL (example: https://bpro.mydomain.com)
+  * This is the URL of Behave Pro Server itself, originally used to configure JIRA
+* Appliance security token
+  * See below where to find this security token
+* Destination JIRA Server URL (example: https://mydomain.com/jira)
+  * Destination JIRA instance where Behave Pro is installed
+* JIRA Username
+  * Destination JIRA Username
+* JIRA Password
+  * Destination JIRA Password
+
+**Appliance security token:**
+
+The security token for the appliance can be found in the source of any Behave Pro frame inside JIRA. This process may vary between browsers:
+
+![View frame source](data-migration/view-frame-source.png)
+
+Right click on a Behave Pro panel such as the Acceptance criteria that appears on each issue view, and select Frame > View frame source.
+
+
+This will display the HTML source of the Behave Pro page. Located within the source is the security token required by the migration tool to authenticate. Near the top of the source you’ll see multiple <code>&lt;meta&gt;</code> lines, you need to identify the one with the name attribute of “acpt” and copy the entire contents of the “content” attribute. Ensure to copy the whole line, it is often too long to display without scrolling horizontally. See screenshot below.
+
+![ACPT meta tag token](data-migration/acpt-token.png)
+
+Copy the entire “content” attribute contents inside the quotes and store it somewhere safe ready for the next steps.
+
+### Migration
+
+1. Open a terminal and browse to the directory containing the Behave Pro Migrator (migrate-1.0-jar-with-dependencies.jar), and execute it with: *java -jar migrate-1.0-jar-with-dependencies.jar*
+
+![Migrator command line](data-migration/migrator-command.png)
+
+2. You’ll immediately be prompted for your Behave Pro Appliance URL, enter or paste this in full and press enter to continue.
+
+3. Next you’ll be prompted for your security token that you saved earlier from the page source, paste this into the terminal and press enter.
+4. You’ll then be prompted for your destination JIRA Server URL, this is the instance where the Behave Pro addon has been installed, and where you’re migrating your data to. Enter this in full and press enter.
+5. Finally you’ll be prompted individually for your JIRA credentials (username and password), these are used to login to JIRA and upload the data you’re migrating. They are not stored or saved anywhere. Enter your username and password separately and press enter after each.
+6. Once you’ve submitted your JIRA credentials the migrator will begin saving your features and scenarios from your old Behave Pro appliance and uploading them to the destination JIRA instance. Follow the progress bar and wait for the success message - this may take some time.
