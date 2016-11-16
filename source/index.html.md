@@ -703,3 +703,92 @@ Copy the entire “content” attribute contents inside the quotes and store it 
 4. You’ll then be prompted for your destination JIRA Server URL, this is the instance where the Behave Pro addon has been installed, and where you’re migrating your data to. Enter this in full and press enter.
 5. Finally you’ll be prompted individually for your JIRA credentials (username and password), these are used to login to JIRA and upload the data you’re migrating. They are not stored or saved anywhere. Enter your username and password separately and press enter after each.
 6. Once you’ve submitted your JIRA credentials the migrator will begin saving your features and scenarios from your old Behave Pro appliance and uploading them to the destination JIRA instance. Follow the progress bar and wait for the success message - this may take some time.
+
+# Publisher EULA
+
+**LAST UPDATED:** November 15th, 2016
+
+This agreement constitutes the "**Publisher EULA**" as defined in the [“**Atlassian Marketplace Terms of Use**”](https://www.atlassian.com/licensing/marketplace/termsofuse) and extends the terms in the terms and conditions set out in the “**Standard EULA**” of the “**Atlassian Marketplace Terms of Use**”
+
+This Publisher EULA is a binding legal agreement between Hindsight Software Limited, (hereinafter “**Publisher**”)
+a registered company in England and Wales (Registered number: 08051221), a provider of downloadable and
+cloud-based applications through the Atlassian Marketplace or any other means that interoperate with applicable
+products manufactured by Atlassian Pty Ltd (“**Atlassian**”), and you (either an individual or a single legal
+entity you represent) whose details are provided to the Publisher upon purchase (hereinafter “**Customer**” or “**you**”)
+for the materials accompanying this EULA, including the accompanying computer software, associated media, printed
+materials and any “**online**” or electronic documentation.
+
+### 1. Scope of the Agreement
+
+**a.** This Publisher EULA governs (a) Publisher’s commercially available downloadable software products sold, or made
+available at no charge (“**Software**”), (b) Publisher’s Software provided in a hosted or cloud-based environment
+(“**Hosted Services**”), and (c) any support services provided by the Publisher relating to the Software or Hosted Services.
+Software and Hosted Services, together with related Documentation, are referred to herein as “**Products**”.
+
+**b.** This EULA does not cover the sale or resale of Atlassian-manufactured software, Licensor’s other professional
+   services relating to Atlassian-manufactured software, nor any physical hardware products provided by Licensor.
+
+### 2. Title and Intellectual property
+Except for the right to use expressly granted herein, all right, title, and interest in and to the Products or any copyrights, patents, trademarks, trade secrets and other intellectual property rights embodied therein or used in connection therewith shall remain with the Publisher and its licensors. The Publisher reserves all rights in the Products not expressly granted to You in these Terms. The Publisher shall own all modifications and derivative works of the Products, whether made by the Publisher, You or any third party, and any suggestions, ideas, enhancement requests, feedback, recommendations or other information provided by You or any other party relating to the Products. You shall not take (and shall not allow any third party to take) any action inconsistent with Publisher’s ownership and interests as set forth above, or assist any third party in doing the same, and You will report to the Publisher promptly in writing any instance of suspected infringement of any intellectual property related to the Products and give the Publisher reasonable assistance in investigating and prosecuting the infringing acts.
+
+### 3. Limited warranty and Disclaimer of all other warranties
+The Product is provided to you strictly on an “as is” and “as available” basis, except that the Publisher warrants that the Product will perform substantially in accordance with the online Product documentation under normal use and circumstances.
+
+All warranties, whether express, implied, statutory or otherwise, including, without limitation, any implied warranty of merchantability, fitness for a particular purpose, or non-infringement of third party rights, are hereby disclaimed to the maximum extent permitted by applicable law by the Publisher and its licensors.
+
+The Publisher and its licensors make no representation, warranty, or guaranty as to the reliability, timeliness, quality, suitability, truth, availability, accuracy or completeness of the Products or with respect to any use that is not in strict compliance with these terms, third party licenses, the rules or any documentation we make available to you via the site or otherwise. Without limiting the foregoing, the Publisher and its licensors do not represent or warrant that
+
+**a.** the access to or use of the Product will be secure, timely, uninterrupted or error-free or operate in combination with any other hardware, software, system or data
+
+**b.** the Product will meet your requirements or expectations
+
+**c.** any stored data will be accurate or reliable, or will not be lost, damage or corrupted
+
+**d.** errors or defects will be corrected, patches or workarounds will be provided, or the Publisher will detect every bug in the Product
+
+**e.** the Product or the server(s) that make the Product available are free of viruses or other harmful components
+
+**f.** third party disruptions and security breaches of the Product will be prevented.
+
+
+### 4. Limitation of Liability
+The Publisher’s aggregate liability arising out of or related to these Terms, the use of or inability to access or use the Products will be limited, to the fullest extent possible under applicable law, to an amount equal to the amount paid by You for the Product during the three (3) month period immediately preceding the event giving rise to such claim. In no event will the Publisher, its affiliates, subsidiaries, or licensors be liable, except insofar as it is not possible to exclude liability under applicable law,
+
+**a.** the use of, or inability to use the Product
+
+**b.** your inability to access the Product or its proper operation due to any malfunctioning network
+
+**c.** your hardware or software failure
+
+**d.** inadequate security on your part, specifically in protecting your any usernames, passwords, registration data and physical access to your hardware, networks and systems
+
+**e.** a failure on your part to comply with applicable legal and regulatory obligations including the payment of any tax in respect of your use of the Product
+
+**f.** any third party act, in particular remote intrusion or viruses
+
+**g.** your breach of these Terms
+
+**h.** for costs of procurement of substitute Products or services, for any special, consequential, incidental, indirect, punitive or exemplary damages (including without limitation for loss of profit)
+
+**i.** for interruption of use or loss or corruption of data; in each case whether or not the Publisher has been advised of the possibility of such damage or loss, however caused and on any theory of liability, arising out of or related to these Terms, the use of or inability to use the Product.
+
+### 5. Publicity
+The Customer grants the Publisher the right to include the Customers name, company name, logo, and/or likeness that you provide during registration, and any review that the Customer may provide (in full or in part) to the Publisher, within Product promotional material and on Publisher’s web site. The Customer can revoke this right at any time by submitting a written request via email to sales@hindsightsoftware.co.uk, requesting to be excluded from future Product promotional material. Requests made after purchasing may take thirty (30) calendar days to process
+
+### 6. U.S. Government Users
+If you are a U.S. Government end user, the Publisher is providing the Products to you as a "Commercial Item" as that term is defined in the U.S. Code of Federal Regulations (see 48 C.F.R. § 2.101), and the rights granted to you by the Publisher for the Products are the same as the rights the Publisher customarily grant to others under this EULA.
+
+### 7. Revisions to EULA
+Publisher may update, modify or amend (together, “Revise”) this EULA from time to time, including any referenced policies and other documents. If a revision meaningfully reduces your rights, the Publisher will use reasonable efforts to notify you by, for example, sending an email to the billing or technical contact you designate in the applicable Order, posting on our blog, website, or on the Atlassian Marketplace website (https://marketplace.atlassian.com). If the Publisher revises this EULA during your term of your license or subscription, the revised version will be effective upon your next renewal of a License Term, Support Services, Hosted Services or Subscription Term, as applicable. In this case, if you object to any revisions, as your exclusive remedy, you may choose not to renew, including cancelling any terms set to auto-renew.
+
+### 8. Statute of limitation
+The customers agrees that regardless of any statute or law to the contrary, any claim or cause of action arising out of or related to use of the Products or these Terms must be filed within one (1) year after such claim or cause of action arose or be forever barred
+
+### 9. Termination
+You may terminate your license to the Products at any time by destroying all your copies of the Software or ceasing your access to the Hosted Services. Your license to the Products shall automatically terminate if you fail to comply with the terms of this EULA. Upon termination of your license, you are required to remove all Software from your computer systems and destroy any copies of the Software in your possession.
+
+### 10. Miscellaneous
+These Terms will be governed by and interpreted under the laws of England, without regard to its choice of law provisions. The exclusive jurisdiction and venue for actions related to the subject matter hereof shall be the applicable courts located in England.
+
+
+IF YOU HAVE QUESTIONS REGARDING THESE TERMS OR WISH TO OBTAIN ADDITIONAL INFORMATION, PLEASE SEND AN E-MAIL TO sales@hindsightsoftware.com
