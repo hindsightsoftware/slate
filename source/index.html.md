@@ -669,6 +669,8 @@ Available parameters:
   * This is the URL of Behave Pro Server itself, originally used to configure JIRA
 * Appliance security token
   * See below where to find this security token
+* Atlassian Cookie
+  * See below where to find this cookie
 * Destination JIRA Server URL (example: https://mydomain.com/jira)
   * Destination JIRA instance where Behave Pro is installed
 * JIRA Username
@@ -690,6 +692,19 @@ This will display the HTML source of the Behave Pro page. Located within the sou
 ![ACPT meta tag token](data-migration/acpt-token.png)
 
 Copy the entire “content” attribute contents inside the quotes and store it somewhere safe ready for the next steps.
+
+**Atlassian Cookie:**
+
+The Atlassian Cookie is also a security token that we need to access the appliance, this can be found on any request made from your browser to the Behave Pro appliance. To get the cookie contents, follow these steps:
+
+Load the Specifications page with the Network tab of your browsers developer tools open (you may need to reload once the tools are open). Next, filter the requests with the search term “features”; this will allow you to locate the request for features to the appliance which happens to also contain the cookie we need.
+
+Select the request and scroll through the request information until you see the Cookie property within the request headers (see screenshot).
+
+![Cookie security token](data-migration/cookie-token.png)
+
+Finally copy the entire contents of the cookie property and store it somewhere safe ready for the next steps.
+
 
 ### Migration
 
