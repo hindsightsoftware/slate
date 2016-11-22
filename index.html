@@ -810,6 +810,11 @@ You must replace <code>username</code> and <code>password</code> with your perso
 <ul>
 <li>See below where to find this security token</li>
 </ul></li>
+<li>Atlassian Cookie
+
+<ul>
+<li>See below where to find this cookie</li>
+</ul></li>
 <li>Destination JIRA Server URL (example: https://mydomain.com/jira)
 
 <ul>
@@ -840,6 +845,18 @@ You must replace <code>username</code> and <code>password</code> with your perso
 <p><img alt="ACPT meta tag token" src="images/data-migration/acpt-token.png" /></p>
 
 <p>Copy the entire “content” attribute contents inside the quotes and store it somewhere safe ready for the next steps.</p>
+
+<p><strong>Atlassian Cookie:</strong></p>
+
+<p>The Atlassian Cookie is also a security token that we need to access the appliance, this can be found on any request made from your browser to the Behave Pro appliance. To get the cookie contents, follow these steps:</p>
+
+<p>Load the Specifications page with the Network tab of your browsers developer tools open (you may need to reload once the tools are open). Next, filter the requests with the search term “features”; this will allow you to locate the request for features to the appliance which happens to also contain the cookie we need.</p>
+
+<p>Select the request and scroll through the request information until you see the Cookie property within the request headers (see screenshot).</p>
+
+<p><img alt="Cookie security token" src="images/data-migration/cookie-token.png" /></p>
+
+<p>Finally copy the entire contents of the cookie property and store it somewhere safe ready for the next steps.</p>
 
 <h3 id="migration">Migration</h3>
 
