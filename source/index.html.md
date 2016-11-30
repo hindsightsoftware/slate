@@ -664,7 +664,7 @@ Available parameters:
 **Prerequisites:**
 
 * Behave Pro Migrator
-  * Download jar: [https://bintray.com/hindsightsoftware/public-maven/behave-pro-migrate/1.0](https://bintray.com/hindsightsoftware/public-maven/behave-pro-migrate/1.0)
+  * [![Download](https://api.bintray.com/packages/hindsightsoftware/public-maven/behave-pro-migrate/images/download.svg) ](https://bintray.com/hindsightsoftware/public-maven/behave-pro-migrate/_latestVersion) (Select *Files* tab and download jar
 * Behave Pro appliance URL (example: https://bpro.mydomain.com)
   * This is the URL of Behave Pro Server itself, originally used to configure JIRA
 * Appliance security token
@@ -708,7 +708,7 @@ Finally copy the entire contents of the cookie property and store it somewhere s
 
 ### Migration
 
-1. Open a terminal and browse to the directory containing the Behave Pro Migrator (migrate-1.0-jar-with-dependencies.jar), and execute it with: *java -jar migrate-1.0-jar-with-dependencies.jar*
+1. Open a terminal and browse to the directory containing the Behave Pro Migrator (migrate-VERSION-jar-with-dependencies.jar), and execute it with: *java -jar migrate-VERSION-jar-with-dependencies.jar*
 
 ![Migrator command line](data-migration/migrator-command.png)
 
